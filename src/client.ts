@@ -3,6 +3,8 @@ import "./styles.css"
 import { GameState } from "./logic"
 import { shareStory } from "./share"
 
+const ROUNDS = 3
+
 function div(id: string): HTMLDivElement {
   return document.getElementById(id) as HTMLDivElement
 }
@@ -120,7 +122,7 @@ Rune.initClient({
           div("waitingForOtherPlayers").style.display = "none"
           div("playerInputControls").style.display = "block"
         }
-        if (game.parts.length < 3) {
+        if (game.parts.length < ROUNDS) {
           if (currentScreen !== "inputScreen") {
             showScreen("inputScreen")
             const storyPart = game.parts[game.parts.length - 1]
