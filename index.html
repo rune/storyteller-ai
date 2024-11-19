@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+    <title>Storyteller AI</title>
+  </head>
+  <body>
+    <div id="page">
+      <div id="logo">
+
+      </div>
+      <div id="players">
+        <img src="avatar" class="player ready"></img>
+        <img src="avatar" class="player not-ready"></img>
+        <img src="avatar" class="player not-ready"></img>
+        <img src="avatar" class="player ready"></img>
+        <img src="avatar" class="player ready"></img>
+      </div>
+      <div id="startScreen" class="screen enabled">
+        <div id="intro">Welcome to the game of Storyteller, where AI helps you create amazing tales.</div>
+        <div id="startTheStory" class="storyButton"><span>Start</span></div>
+      </div>
+
+      <div id="thinkingScreen" class="screen off">
+        <div id="thinking">Storyteller AI is writing an epic....</div>
+      </div>
+      <div id="inputScreen" class="screen off">
+        <div id="textSection">
+        </div>
+        <div id="playerInputControls">
+          <div id="error"></div>
+          <input type="text" id="playerInput" placeholder="Enter story terms here">
+          </input>
+          <div id="suggestions">
+            <div id="suggestionsLabel">SUGGESTIONS</div>
+            <div id="suggestionsList">
+            </div>
+          </div>
+          <div id="addButton" class="storyButton"><span>Add</span></div>
+        </div>
+        <div id="waitingForOtherPlayers">
+          Waiting for other players...
+        </div>
+      </div>
+
+      <div id="endScreen" class="screen off">
+        <div id="fullTextSection">
+          The creature paused, eyeing the  <span class="term">rubber duck<img src="avatar" class="termAvatar"></span>     at its feet when a  telephone     on the fountain rang. A familiar voice crackled through—britney spears    singing softly, distorted and haunting. The crowd froze, unsure if they were more startled by the voice or the creature's sudden, intent gaze on the ringing phone.
+        </div>
+        <div id="shareButton" class="storyButton"><span>Share</span></div>
+
+      </div>
+    </div>
+    <script type="module" src="/src/logic.ts"></script>
+    <script type="module" src="/src/client.ts"></script>
+  </body>
+</html>
