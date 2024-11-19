@@ -2,8 +2,15 @@ import { PlayerId } from "rune-sdk"
 import "./styles.css"
 import { GameState } from "./logic"
 import { shareStory } from "./share"
+import clickSfxUrl from "./assets/click.mp3"
+import cameraSfxUrl from "./assets/camera.mp3"
 
 const ROUNDS = 3
+
+const clickSfx = new Audio()
+clickSfx.src = clickSfxUrl
+const cameraSfx = new Audio()
+cameraSfx.src = cameraSfxUrl
 
 function div(id: string): HTMLDivElement {
   return document.getElementById(id) as HTMLDivElement
@@ -40,14 +47,20 @@ function clearError() {
 }
 
 div("startTheStory").addEventListener("click", () => {
+  clickSfx.play()
+
   Rune.actions.start()
 })
 
 div("shareButton").addEventListener("click", () => {
+  cameraSfx.play()
+
   shareStory(fullText, terms)
 })
 
 div("addButton").addEventListener("click", () => {
+  clickSfx.play()
+
   const term = (document.getElementById("playerInput") as HTMLInputElement)
     .value
   if (term.trim() === "") {
@@ -145,6 +158,7 @@ Rune.initClient({
               suggestionDiv.classList.add("suggestion")
               suggestionDiv.innerHTML = suggestion
               suggestionDiv.addEventListener("click", () => {
+                clickSfx.play()
                 ;(
                   document.getElementById("playerInput") as HTMLInputElement
                 ).value = suggestion

@@ -5,7 +5,7 @@ export const INITIAL_PROMPT =
   "You should start by generating the first few lines of a short story around 300 characters in length and provide it on a line starting with Output:.\n" +
   "The user will then provide terms to include in the story on a line starting with Input:.\n" +
   "You should then generate a few more lines of the story including the terms provided.\n" +
-  "You should also provide 10 suggestions for terms to feature in the next part of the story on a line starting with Suggestions:.\n" +
+  "You should also provide 10 suggestions for terms to feature in the next part of the story on a line starting with Suggestions:. Suggestions should be one or two words only, never more.\n" +
   "After a few rounds the user will provide the last set of terms with a line starting with EndInput:.\n" +
   "You should generate the end of the story with the final terms and conclude the story.\n" +
   "The example below is for structure only. Write the story without considering its content and come up with new ideas. Try to make the story as funny as possible.\n" +
