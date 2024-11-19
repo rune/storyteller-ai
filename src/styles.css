@@ -125,9 +125,9 @@ body {
 }
 
 .termAvatar {
-  margin-left: 1vw;
+  margin-left: 2vw;
   border-radius: 100%;
-  transform: translate(5%, 35%);
+  transform: translate(5%, 13%);
   height: 14px;
   width: 14px;
   background: red;

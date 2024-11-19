@@ -85,7 +85,18 @@ function showScreen(screen: string) {
 }
 let gameStarted = false
 
-function formatStory(game: GameState, text: string) {
+function formatStory(allPlayerIds: PlayerId[], game: GameState, text: string) {
+  for (const playerId of allPlayerIds) {
+    const avatarUrl = Rune.getPlayerInfo(playerId).avatarUrl
+    if (game.allTerms[playerId]) {
+      for (const term of game.allTerms[playerId]) {
+        const regEx = new RegExp(term, "ig")
+        const span = `<span class="term">${term}<img class="termAvatar" src="${avatarUrl}"></img></span>`
+
+        text = text.replace(regEx, span)
+      }
+    }
+  }
   return text
 }
 
@@ -113,7 +124,11 @@ Rune.initClient({
           if (currentScreen !== "inputScreen") {
             showScreen("inputScreen")
             const storyPart = game.parts[game.parts.length - 1]
-            div("textSection").innerHTML = formatStory(game, storyPart.text)
+            div("textSection").innerHTML = formatStory(
+              allPlayerIds,
+              game,
+              storyPart.text
+            )
             div("textSection").scrollTop = 0
             div("suggestionsList").innerHTML = ""
 
@@ -141,6 +156,7 @@ Rune.initClient({
             fullText = game.parts.map((part) => part.text).join("\n\n")
             terms = game.allTerms
             div("fullTextSection").innerHTML = formatStory(
+              allPlayerIds,
               game,
               game.parts.map((part) => part.text).join("<p>")
             )
