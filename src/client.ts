@@ -1,6 +1,7 @@
 import { PlayerId } from "rune-sdk"
 import "./styles.css"
 import { GameState } from "./logic"
+import { shareStory } from "./share"
 
 function div(id: string): HTMLDivElement {
   return document.getElementById(id) as HTMLDivElement
@@ -40,6 +41,10 @@ div("startTheStory").addEventListener("click", () => {
   Rune.actions.start()
 })
 
+div("shareButton").addEventListener("click", () => {
+  shareStory(fullText, terms)
+})
+
 div("addButton").addEventListener("click", () => {
   const term = (document.getElementById("playerInput") as HTMLInputElement)
     .value
@@ -63,6 +68,8 @@ div("addButton").addEventListener("click", () => {
 )
 
 let currentScreen = "startScreen"
+let fullText = ""
+let terms: Record<PlayerId, string[]> = {}
 
 function showScreen(screen: string) {
   if (screen !== currentScreen) {
@@ -131,8 +138,12 @@ Rune.initClient({
         } else {
           if (currentScreen !== "endScreen") {
             showScreen("endScreen")
-            const fullText = game.parts.map((part) => part.text).join("<p>")
-            div("fullTextSection").innerHTML = formatStory(game, fullText)
+            fullText = game.parts.map((part) => part.text).join("\n\n")
+            terms = game.allTerms
+            div("fullTextSection").innerHTML = formatStory(
+              game,
+              game.parts.map((part) => part.text).join("<p>")
+            )
             div("fullTextSection").scrollTop = 0
           }
         }
