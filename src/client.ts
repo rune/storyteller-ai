@@ -116,7 +116,13 @@ function formatStory(allPlayerIds: PlayerId[], game: GameState, text: string) {
 }
 
 Rune.initClient({
-  onChange: ({ allPlayerIds, game, yourPlayerId }) => {
+  onChange: ({ allPlayerIds, game, yourPlayerId, event }) => {
+    if (event && event.name === "stateSync") {
+      if (event.isNewGame) {
+        gameStarted = false
+        showScreen("startScreen")
+      }
+    }
     updatePlayers(game, allPlayerIds)
 
     if (game.started && !gameStarted) {
