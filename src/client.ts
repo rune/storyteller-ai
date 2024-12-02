@@ -142,7 +142,7 @@ Rune.initClient({
           div("playerInputControls").style.display = "block"
         }
         if (game.parts.length < ROUNDS) {
-          if (currentScreen !== "inputScreen") {
+          if (currentScreen !== "inputScreen" && game.parts.length > 0) {
             showScreen("inputScreen")
             const storyPart = game.parts[game.parts.length - 1]
             div("textSection").innerHTML = formatStory(
