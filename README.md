@@ -1,4 +1,5 @@
 # Storyteller AI 
+[Play!](https://join.rune.ai/game/Gy09RBNl-gwE) | [Kick Off](https://www.youtube.com/watch?v=8lKNgpjHBKU) | [Time Lapse](https://www.youtube.com/watch?v=0_4ULXo4dsU) | [Post-Mortem](https://www.youtube.com/watch?v=Gn8graz6wV4) 
 
 The first in the series of 7 AI games in 7 days written for the [Rune](https://rune.ai) games app.
 
